@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ministead | Mental Clarity</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: white;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+    .video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.3;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Hero Section -->
+  <section class="h-screen relative flex items-center justify-center text-center px-6 overflow-hidden">
+    <video autoplay muted loop class="video-bg">
+      <source src="your-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="z-10">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Mental clarity starts with intention.</h1>
+      <a href="#services" class="mt-6 inline-block bg-white text-black px-6 py-3 rounded-full transition hover:bg-gray-300">Explore</a>
+    </div>
+    <!-- Hamburger Menu -->
+    <div class="absolute top-6 right-6 z-10">
+      <button id="menuBtn" class="text-white text-3xl focus:outline-none">&#9776;</button>
+    </div>
+    <!-- Hidden Menu -->
+    <div id="mobileMenu" class="hidden fixed top-0 right-0 h-full w-64 bg-gray-900 p-6 z-20 shadow-lg">
+      <button id="closeMenu" class="text-white text-2xl mb-6">&times;</button>
+      <nav class="flex flex-col space-y-4">
+        <a href="#" class="hover:text-gray-400">Home</a>
+        <a href="#about" class="hover:text-gray-400">About</a>
+        <a href="#services" class="hover:text-gray-400">Services</a>
+        <a href="#blog" class="hover:text-gray-400">Blog</a>
+        <a href="#contact" class="hover:text-gray-400">Contact</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 px-6 bg-black">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold">Our Services</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+      <div class="bg-gray-800 p-6 rounded-xl hover:scale-105 transition-transform duration-300" data-aos="fade-up">
+        <h3 class="text-xl font-semibold mb-2">Coaching</h3>
+        <p>Personalized mental development guidance.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-xl hover:scale-105 transition-transform duration-300" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-xl font-semibold mb-2">Mental Fitness</h3>
+        <p>Meditation, breathing routines, awareness tools.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-xl hover:scale-105 transition-transform duration-300" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-xl font-semibold mb-2">Resilience Planning</h3>
+        <p>Burnout prevention and cognitive resilience strategy.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-xl hover:scale-105 transition-transform duration-300" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-xl font-semibold mb-2">Focus Tools</h3>
+        <p>Concentration and attention enhancement methods.</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    menuBtn.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+  </script>
+</body>
+
+</html>
