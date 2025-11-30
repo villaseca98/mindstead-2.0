@@ -1,0 +1,353 @@
+<!-- Mindstead — Coherent Breathing & HRV: Why It Calms the System (One-Widget Version, Sidebar con artículos) -->
+<div id="mindstead-article-coherence" class="ms-root" lang="en">
+    <style>
+      :root{
+        --bg:##FFFFFF
+  ; --bg-elev:#121a2b; --ink:#e6eef7; --ink-dim:#2e66c7; --line:#223049;
+        --brand-1:#0ea5e9; --brand-2:#1666d7; --emerald:#10b981; --cyan:#06b6d4; --accent:#7dd3fc;
+        --shadow:0 10px 30px rgba(0,0,0,.45); --radius:18px; --radius-sm:12px; --maxw:1100px;
+      }
+      h1, h2, h3, h4, h5 {
+    color: white !important;
+}
+
+      #mindstead-article-coherence *{box-sizing:border-box}
+      #mindstead-article-coherence{
+        color:var(--ink);
+        background:
+          radial-gradient(1200px 800px at 10% -10%, rgba(14,165,233,.08), transparent 60%),
+          radial-gradient(900px 700px at 110% 10%, rgba(100,116,139,.10), transparent 60%),
+          linear-gradient(180deg, #0a0f1a 0%, #0b1220 40%, #0b1220 100%);
+        font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+        padding: clamp(16px, 3vw, 28px);
+      }
+      .ms-wrap{max-width:var(--maxw); margin:0 auto;}
+      a{color:var(--brand-1); text-decoration:none} a:hover{text-decoration:underline}
+  
+      .ms-breadcrumbs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;color:var(--ink-dim);font-size:.92rem;margin:2px 0 18px}
+      .ms-breadcrumbs a{color:var(--ink-dim)} .ms-breadcrumbs .sep{opacity:.6}
+  
+      .ms-hero{position:relative;border:1px solid var(--line);border-radius:var(--radius);background:
+        linear-gradient(180deg, rgba(14,165,233,.08), rgba(100,116,139,.05) 40%, rgba(14,165,233,.04) 100%), var(--bg-elev);
+        box-shadow:var(--shadow);overflow:hidden}
+      .ms-hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;padding:clamp(18px,4vw,32px)}
+      @media (max-width:900px){.ms-hero-inner{grid-template-columns:1fr}}
+    .ms-eyebrow{color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-weight:600;font-size:.8rem}
+    .ms-title{font-size:clamp(1.8rem,3.6vw,2.6rem);line-height:1.2;margin:.35rem 0 .6rem;font-weight:800}
+    .ms-sub{color:var(--ink-dim)}
+    .ms-hero-fig{border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--line);background:#0f1626}
+    .ms-hero-fig img{width:100%;height:100%;aspect-ratio:16/9;object-fit:cover;display:block;filter:saturate(1.05)}
+
+    .ms-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn{--padY:.78rem;--padX:1.1rem;display:inline-flex;align-items:center;gap:.55rem;padding:var(--padY) var(--padX);
+      border-radius:999px;font-weight:700;letter-spacing:.2px;border:1px solid rgba(255,255,255,.08);
+      transition:transform .12s ease,filter .12s,box-shadow .12s;box-shadow:0 6px 16px rgba(16,185,129,.15);white-space:nowrap}
+    .btn:hover{transform:translateY(-1px)} .btn:active{transform:translateY(0)}
+    .btn--emerald-cyan{background:linear-gradient(90deg,var(--emerald),var(--cyan));color:#03140f;text-shadow:0 1px 0 rgba(255,255,255,.25)}
+    .btn--ghost{background:rgba(255,255,255,.04);color:var(--ink)}
+
+    .ms-meta{display:flex;gap:16px;align-items:center;color:var(--ink-dim);font-size:.92rem;margin-top:12px}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--brand-1);display:inline-block}
+
+    .ms-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;margin-top:22px}
+    @media (max-width:1000px){.ms-grid{grid-template-columns:1fr}}
+
+    .ms-article{border:1px solid var(--line);background:var(--bg-elev);border-radius:var(--radius);
+      padding:clamp(18px,2.6vw,26px);box-shadow:var(--shadow)}
+
+    .prose h2{font-size:clamp(1.25rem,2.2vw,1.6rem);margin:1.2em 0 .4em}
+    .prose h3{font-size:clamp(1.05rem,1.7vw,1.25rem);margin:1.1em 0 .35em}
+    .prose p{margin:.75em 0} .prose ul{padding-left:1.2em;margin:.6em 0} .prose li{margin:.35em 0}
+    .prose blockquote{margin:1rem 0;padding:1rem;border-left:3px solid var(--brand-1);
+      background:linear-gradient(180deg, rgba(100,116,139,.14), rgba(100,116,139,.08));
+      border-radius:0 var(--radius-sm) var(--radius-sm) 0;color:#cfe8ff} /* Sidebar base */
+    .ms-toc{border:1px solid var(--line);background:linear-gradient(180deg, rgba(14,165,233,.06), rgba(100,116,139,.05)), var(--bg-elev);
+      border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);position:sticky;top:16px}
+    .ms-toc h4{margin:0 0 .6rem;font-size:1rem;color:var(--accent)}
+    .ms-toc a{display:block;padding:.42rem .5rem;border-radius:10px;color:var(--ink-dim)}
+    .ms-toc a:hover{background:rgba(255,255,255,.05);color:var(--ink)}
+    .ms-toc .div{margin-top:20px;border-top:1px solid var(--line);padding-top:16px}
+
+    /* Cards media artículo */
+    .ms-media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:1rem 0}
+    @media (max-width:800px){.ms-media{grid-template-columns:1fr}}
+    .card{border:1px solid var(--line);background:var(--bg-elev);border-radius:var(--radius-sm);overflow:hidden}
+    .card .fig{width:100%;aspect-ratio:16/9;overflow:hidden;background:#0f1626}
+    .card img{width:100%;height:100%;object-fit:cover;display:block}
+    .card .body{padding:14px}
+    .badge{display:inline-block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#07201a;font-weight:800;background:linear-gradient(90deg,var(--emerald),var(--cyan));padding:.28rem .5rem;border-radius:999px}
+
+    .infobox{border:1px dashed #28506a;background:linear-gradient(180deg, rgba(14,165,233,.07), rgba(14,165,233,.03));border-radius:var(--radius-sm);padding:14px 16px;color:#cce7ff;margin:1rem 0}
+    .steps{display:grid;gap:10px;margin:.6rem 0}
+    .step{display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+    .num{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#03140f;background:linear-gradient(90deg,var(--emerald),var(--cyan))}
+    .copy-btn{margin-left:auto;border:none;cursor:pointer;border-radius:999px;padding:.45rem .7rem;font-weight:700;color:#03140f;background:linear-gradient(90deg,var(--emerald),var(--cyan))}
+
+    .faq{border-top:1px solid var(--line);margin-top:10px}
+    details{border-bottom:1px solid var(--line);padding:14px 4px}
+    summary{cursor:pointer;font-weight:700} details[open] summary{color:var(--accent)}
+    (--accent)}
+
+.cta-bar{margin-top:18px;padding:16px;border:1px solid var(--line);background:linear-gradient(90deg, rgba(16,185,129,.10), rgba(6,182,212,.10));
+  border-radius:var(--radius);display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.cta-bar strong{font-size:1.05rem}
+
+.ms-progress{position:fixed;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,var(--emerald),var(--cyan));z-index:999999}
+.muted{color:var(--ink-dim)}
+
+/* ==== Sidebar article list (con imágenes uniformes) ==== */
+.side-list{display:grid;gap:12px;margin-top:10px}
+.s-card{display:block;border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:14px;overflow:hidden;transition:transform .12s ease, box-shadow .12s ease}
+.s-card:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(0,0,0,.25)}
+.s-fig{width:100%;aspect-ratio:16/9;overflow:hidden;background:#0f1626}
+.s-fig img{width:100%;height:100%;object-fit:cover;display:block}
+.s-body{padding:10px 12px}
+.s-title{color:var(--ink);font-weight:700;line-height:1.25}
+.s-meta{font-size:.82rem;color:var(--ink-dim);margin-top:2px}
+</style>
+
+<!-- Progress bar -->
+<div class="ms-progress" aria-hidden="true"></div>
+
+<div class="ms-wrap">
+<!-- Breadcrumbs -->
+<nav class="ms-breadcrumbs" aria-label="Breadcrumb">
+  <a href="/the-journal">The Journal</a><span class="sep">/</span>
+  <a href="/the-journal/breathing-techniques">Breathing Techniques</a><span class="sep">/</span>
+  <span aria-current="page">Coherent Breathing &amp; HRV</span>
+</nav>
+
+<!-- HERO -->
+<section class="ms-hero">
+  <div class="ms-hero-inner">
+    <header>
+      <span class="ms-eyebrow">Breathing Techniques · HRV</span>
+      <h1 class="ms-title">Coherent Breathing &amp; HRV: Why It Calms the System</h1>
+      <p class="ms-sub">A science-backed way to nudge your autonomic nervous system into balance. Learn the optimal pace (≈5–6 breaths/min), how it boosts heart rate variability (HRV), and try a 2-minute guided practice.</p>
+      <div class="ms-meta"><span>8–10 min read</span><span class="dot"></span><span>Evidence-based</span><span class="dot"></span><span>Updated Sep 6, 2025</span></div>
+      <div class="ms-actions">
+        <a class="btn btn--emerald-cyan" href="#try-session" role="button">▶ Try 2-minute session</a>
+        <a class="btn btn--ghost" href="/the-methods/breathing-techniques" role="button">More Breathing Methods</a>
+      </div>
+    </header>
+    <figure class="ms-hero-fig">
+      <img src="https://images.pexels.com/photos/4325466/pexels-photo-4325466.jpeg?auto=compress&cs=tinysrgb&h=750" alt="Person practicing slow breathing with a calm, blue-toned background" loading="lazy" />
+    </figure>
+  </div>
+</section>
+
+<!-- GRID -->
+<div class="ms-grid">
+  <!-- Article -->
+  <article class="ms-article prose" itemscope itemtype="https://schema.org/Article">
+    <meta itemprop="headline" content="Coherent Breathing & HRV: Why It Calms the System" />
+    <meta itemprop="author" content="Mindstead Editorial" />
+    <meta itemprop="inLanguage" content="en" />
+    <meta itemprop="dateModified" content="2025-09-06" />
+    <meta itemprop="datePublished" content="2025-09-06" />
+
+    <section id="what-is"><h2>What is “Coherent Breathing”?</h2>
+      <p>Coherent breathing is a gentle pattern of slow, even inhales and exhales—typically around <strong>5–6 breaths per minute</strong> (about 10–12 seconds per breath). This pacing helps your heart rhythms and breathing rhythms sync, a state called <em>cardiorespiratory coherence</em>. It often increases <strong>HRV (heart rate variability)</strong>, a marker of flexible, resilient autonomic function.</p>
+      <div class="ms-media">
+        <div class="card"><div class="fig"><img src="https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&h=750" alt="Calm person seated, breathing evenly"></div><div class="body"><span class="badge">5–6 bpm</span><h3>Why this pace?</h3><p class="muted">It stimulates baroreflex sensitivity and vagal tone. In simple terms: the heart and breath “talk” more clearly, easing sympathetic overdrive.</p></div></div>
+        <div class="card"><div class="fig"><img src="https://images.pexels.com/photos/3764568/pexels-photo-3764568.jpeg?auto=compress&cs=tinysrgb&h=750" alt="Blue waveform representing smooth HRV pattern"></div><div class="body"><span class="badge">HRV ↑</span><h3>HRV & calm</h3><p class="muted">Higher HRV is generally associated with better stress regulation, emotional flexibility, and recovery readiness.</p></div></div>
+      </div>
+    </section>
+
+    <section id="mechanism"><h2>How does it work?</h2>
+      <p>When you breathe slowly and evenly, pressure sensors in your arteries (<em>baroreceptors</em>) coordinate with the vagus nerve to stabilize blood pressure and heart rhythms. This downshifts “fight-or-flight” activity and supports “rest-and-digest.” Many people notice a <strong>quieter mind, warmer hands, and slower pulse</strong> within a couple of minutes.</p>
+      <div class="kpi" role="list">
+        <div class="k" role="listitem"><div class="v">~5.5</div><div class="muted">breaths/min “resonance” average</div></div>
+        <div class="k" role="listitem"><div class="v">10–12s</div><div class="muted">per full breath (in+out)</div></div>
+        <div class="k" role="listitem"><div class="v">2–5m</div><div class="muted">to feel first effects</div></div>
+      </div>
+      <blockquote>Coherence is less about “deep” breathing and more about <strong>even, unforced pacing</strong>. Comfortable, nasal breathing usually works best.</blockquote>
+    </section>
+
+    <section id="practice"><h2>A simple 2-minute practice (anywhere)</h2>
+      <div class="infobox"><strong>Tip:</strong> If you feel light-headed, simply breathe a little shallower and keep the same rhythm. Comfort first; never force the inhale.</div><ol class="steps" id="copy-sequence" aria-label="Guided steps">
+        <li class="step"><span class="num">1</span><div>Sit tall. Relax your jaw and shoulders. Close your mouth and breathe through the nose if possible.</div><button class="copy-btn" data-copy="Sit tall. Relax jaw and shoulders. Breathe nasally if comfortable.">Copy</button></li>
+        <li class="step"><span class="num">2</span><div>Inhale for <strong>5 seconds</strong>. Keep it light and quiet.</div><button class="copy-btn" data-copy="Inhale 5 seconds, light and quiet.">Copy</button></li>
+        <li class="step"><span class="num">3</span><div>Exhale for <strong>5 seconds</strong>. Let the breath fall out smoothly.</div><button class="copy-btn" data-copy="Exhale 5 seconds, smooth.">Copy</button></li>
+        <li class="step"><span class="num">4</span><div>Repeat this <strong>5-in / 5-out</strong> for 2 minutes. If comfortable, you can progress to 5.5-in / 5.5-out.</div><button class="copy-btn" data-copy="Repeat 5-in / 5-out for 2 minutes.">Copy</button></li>
+        <li class="step"><span class="num">5</span><div>Finish with one normal breath and notice: heart rate, body warmth, and mental clarity.</div><button class="copy-btn" data-copy="Finish, notice calm and clarity.">Copy</button></li>
+      </ol>
+    </section>
+
+    <section id="try-session"><h2>Try the 2-minute coherence session</h2>
+      <p class="muted">Press play and follow the expanding/contracting cue. It runs a ~10s cycle (5 in / 5 out).</p>
+      <div class="card" style="padding:16px">
+        <div class="fig" style="display:grid;place-items:center;background: radial-gradient(400px 300px at 50% 40%, rgba(125,211,252,.18), transparent 60%), #0f1626;">
+          <div id="breath-dot" aria-label="Breathing pacer" style="width:70px;height:70px;border-radius:50%;background:linear-gradient(90deg,var(--emerald),var(--cyan));box-shadow:0 0 0 0 rgba(6,182,212,.45);"></div>
+        </div>
+        <div class="body" style="display:flex;gap:10px;align-items:center;justify-content:space-between;">
+          <div><strong>Coherence Pacer · 5s in / 5s out</strong><div class="muted">You’ll feel a smooth pulse. Breathe comfortably.</div></div>
+          <div class="ms-actions"><button id="pacer-toggle" class="btn btn--emerald-cyan" aria-pressed="true">⏸ Pause</button><button id="pacer-reset" class="btn btn--ghost">↺ Reset</button></div>   </div>
+        </div>
+      </section>
+
+      <section id="benefits"><h2>Benefits you may notice</h2>
+        <ul>
+          <li><strong>Calmer baseline</strong>: reduced physiological arousal and mental chatter.</li>
+          <li><strong>HRV support</strong>: gradual improvements with consistent practice.</li>
+          <li><strong>Sleep-ready</strong>: wind-down routine before bed (2–5 minutes is enough).</li>
+          <li><strong>Focus</strong>: smoother attention in high-pressure tasks.</li>
+        </ul>
+      </section>
+
+      <section id="when"><h2>When to use it</h2>
+        <p>Great before stressful events, after alerts/notifications, pre-sleep, or between work blocks. If you feel <em>too</em> drowsy, shorten the session or switch to a slightly faster 4-in / 4-out.</p>
+      </section>
+
+      <section id="faq" class="faq"><h2>FAQs</h2>
+        <details><summary>Is coherent breathing the same as box breathing?</summary><p>No. Box breathing usually adds holds (e.g., 4-in, 4-hold, 4-out, 4-hold). Coherence is typically a smooth <em>in/out</em> with no holds.</p></details>
+        <details><summary>What if 5-in / 5-out feels uncomfortable?</summary><p>Keep the rhythm but reduce depth. Comfort and consistency matter more than “big” breaths.</p></details>
+        <details><summary>How soon will I see benefits?</summary><p>Many feel calmer in 2–5 minutes. HRV and stress reactivity shift over weeks of regular practice.</p></details>
+        <details><summary>Does it replace therapy or medical care?</summary><p>No. It’s a self-regulation tool. If you have medical or psychological conditions, consult a professional.</p></details>
+        <details><summary>Best cadence for me?</summary><p>Most people land between 4.5–6.5 breaths/min. Try 5/5 first, then fine-tune by feel.</p></details>
+      </section>
+      <div class="cta-bar" role="complementary">
+        <strong>Build a daily 2-minute calm habit.</strong>
+        <div class="ms-actions">
+          <a class="btn btn--emerald-cyan" href="/the-methods/breathing-techniques">Explore Breathing Techniques</a>
+          <a class="btn btn--ghost" href="/the-journal">Read more on The Journal</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- SIDEBAR COMPLETA CON ARTÍCULOS CON FOTO -->
+    <aside class="ms-toc" aria-label="Sidebar navigation">
+      <h4>On this page</h4>
+      <a href="#what-is">What is Coherent Breathing?</a>
+      <a href="#mechanism">How does it work?</a>
+      <a href="#practice">2-minute practice</a>
+      <a href="#try-session">Interactive pacer</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#when">When to use it</a>
+      <a href="#faq">FAQs</a>
+
+      <div class="div">
+        <h4>About the author</h4>
+        <p class="muted">Written by the <strong>Mindstead Editorial Team</strong>, specialists in mental clarity, stress science, and evidence-based wellbeing.</p>
+      </div>
+
+      <div class="div">
+        <h4>Recommended Reads</h4>
+        <div class="side-list">
+          <a class="s-card" href="/the-journal/breathing-techniques/box-breathing-basics">
+            <div class="s-fig"><img src="https://images.pexels.com/photos/3997993/pexels-photo-3997993.jpeg?auto=compress&cs=tinysrgb&h=600" alt="Box breathing practice card"></div>
+            <div class="s-body"><div class="s-title">Box Breathing: Simple Stress Reset</div><div class="s-meta">Guide · 4 min read</div></div>
+          </a>
+          <a class="s-card" href="/the-journal/breathing-techniques/resonant-frequency">
+            <div class="s-fig"><img src="https://images.pexels.com/photos/4056836/pexels-photo-4056836.jpeg?auto=compress&cs=tinysrgb&h=600" alt="Resonant breathing frequency"></div>  <div class="s-body"><div class="s-title">Resonant Frequency: Find Your Best Pace</div><div class="s-meta">Science · 6 min read</div></div>
+        </a>
+        <a class="s-card" href="/the-journal/sleep/bedtime-breath-downshift">
+          <div class="s-fig"><img src="https://images.pexels.com/photos/3771069/pexels-photo-3771069.jpeg?auto=compress&cs=tinysrgb&h=600" alt="Breathing for sleep"></div>
+          <div class="s-body"><div class="s-title">Bedtime Breath: Downshift for Better Sleep</div><div class="s-meta">Sleep · 5 min read</div></div>
+        </a>
+        <a class="s-card" href="/the-journal/anxiety/HRV-and-emotional-flexibility">
+          <div class="s-fig"><img src="https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?auto=compress&cs=tinysrgb&h=600" alt="HRV and emotions"></div>
+          <div class="s-body"><div class="s-title">HRV & Emotional Flexibility: What Studies Show</div><div class="s-meta">Research · 7 min read</div></div>
+        </a>
+        <a class="s-card" href="/the-journal/focus/coherence-for-focus">
+          <div class="s-fig"><img src="https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&h=600" alt="Focus and breathing"></div>
+          <div class="s-body"><div class="s-title">Coherence for Focus: Pre-Task Routine</div><div class="s-meta">Productivity · 4 min read</div></div>
+        </a>
+        <a class="s-card" href="/the-journal/digital-detox/notification-reset-breath">
+          <div class="s-fig"><img src="https://images.pexels.com/photos/4049725/pexels-photo-4049725.jpeg?auto=compress&cs=tinysrgb&h=600" alt="Digital detox breathing"></div>
+          <div class="s-body"><div class="s-title">Notification Reset Breath (60 seconds)</div><div class="s-meta">Detox · 3 min read</div></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="div">
+      <h4>Quick Practice</h4>
+      <p class="muted">Try our <em>Take a Minute</em> micro-coach for guided calm.</p> <a href="/the-studio/take-a-minute" class="btn btn--emerald-cyan" style="margin-top:8px;">▶ Launch mini-coach</a>
+    </div>
+
+    <div class="div">
+      <h4>Stay updated</h4>
+      <p class="muted">Get new breathing routines and wellbeing tools in your inbox.</p>
+      <form onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+        <input type="email" placeholder="Your email" required
+          style="width:100%; padding:.6rem .8rem; border-radius:10px; border:1px solid var(--line); margin:6px 0; background:rgba(255,255,255,.04); color:var(--ink);" />
+        <button type="submit" class="btn btn--emerald-cyan" style="width:100%; justify-content:center;">Subscribe</button>
+      </form>
+    </div>
+  </aside>
+</div>
+</div>
+
+<!-- JSON-LD: Article + FAQ -->
+<script type="application/ld+json">
+{
+"@context":"https://schema.org","@type":"Article",
+"headline":"Coherent Breathing & HRV: Why It Calms the System","inLanguage":"en",
+"author":{"@type":"Organization","name":"Mindstead Editorial"},
+"publisher":{"@type":"Organization","name":"Mindstead","logo":{"@type":"ImageObject","url":"https://mindstead.io/wp-content/uploads/2025/08/logo.png"}},
+"datePublished":"2025-09-06","dateModified":"2025-09-06",
+"mainEntityOfPage":{"@type":"WebPage","@id":"https://mindstead.io/the-journal/breathing-techniques/coherent-breathing-hrv"},
+"image":"https://images.pexels.com/photos/4325466/pexels-photo-4325466.jpeg",
+"description":"A science-backed way to nudge your autonomic nervous system into balance. Learn the optimal pace (≈5–6 breaths/min), how it boosts HRV, and try a 2-minute guided practice."
+}
+</script>
+<script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Is coherent breathing the same as box breathing?","acceptedAnswer":{"@type":"Answer","text":"No. Box breathing usually adds holds (e.g., 4-in, 4-hold, 4-out, 4-hold). Coherence is typically a smooth in/out with no holds."}},
+      {"@type":"Question","name":"What if 5-in / 5-out feels uncomfortable?","acceptedAnswer":{"@type":"Answer","text":"Keep the rhythm but reduce depth. Comfort and consistency matter more than big breaths."}},
+      {"@type":"Question","name":"How soon will I see benefits?","acceptedAnswer":{"@type":"Answer","text":"Many feel calmer in 2–5 minutes. HRV and stress reactivity shift over weeks of regular practice."}},
+      {"@type":"Question","name":"Does it replace therapy or medical care?","acceptedAnswer":{"@type":"Answer","text":"No. It’s a self-regulation tool. If you have medical or psychological conditions, consult a professional."}},
+      {"@type":"Question","name":"Best cadence for me?","acceptedAnswer":{"@type":"Answer","text":"Most people land between 4.5–6.5 breaths/min. Try 5/5 first, then fine-tune by feel."}}
+    ]}
+    </script>
+  
+    <!-- JS (pacer + copy + progress) -->
+    <script>
+      (function(){
+        const root=document.getElementById('mindstead-article-coherence'); if(!root) return;
+  
+        /* Smooth scroll interno */
+        root.querySelectorAll('a[href^="#"]').forEach(a=>{
+          a.addEventListener('click',e=>{
+            const id=a.getAttribute('href').slice(1);
+            const el=root.querySelector('#'+CSS.escape(id));
+            if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});history.replaceState(null,'','#'+id);}
+          })
+        });
+  
+        /* Botones Copy */
+        root.querySelectorAll('.copy-btn').forEach(btn=>{
+          btn.addEventListener('click', async ()=>{
+            const text=btn.dataset.copy||'';
+            try{ await navigator.clipboard.writeText(text); const prev=btn.textContent; btn.textContent='✓ Copied'; setTimeout(()=>btn.textContent=prev,1200);}catch{ btn.textContent='↻ Try again'; setTimeout(()=>btn.textContent='Copy',1200); }
+        });
+      });
+
+      /* Pacer */
+      const dot=root.querySelector('#breath-dot'); const toggle=root.querySelector('#pacer-toggle'); const reset=root.querySelector('#pacer-reset');
+      let running=true; let t0=performance.now(); const cycleMs=10000, minSize=70, maxSize=150;
+      const lerp=(a,b,t)=>a+(b-a)*t;
+      function animate(now){
+        if(running){
+          const t=((now-t0)%cycleMs)/cycleMs; const phase=Math.sin(t*Math.PI*2)*.5+.5;
+          const size=lerp(minSize,maxSize,phase);
+          dot.style.width=size+'px'; dot.style.height=size+'px'; dot.style.boxShadow=`0 0 0 ${Math.round(phase*26)}px rgba(6,182,212,0.18)`;
+        }
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+      toggle?.addEventListener('click',()=>{running=!running; toggle.textContent=running?'⏸ Pause':'▶ Play'; toggle.setAttribute('aria-pressed',String(running)); if(running){t0=performance.now();}});
+      reset?.addEventListener('click',()=>{t0=performance.now();});
+
+      /* Barra progreso lectura */
+      const bar=root.querySelector('.ms-progress');
+      const onScroll=()=>{
+        const doc=document.documentElement; const total=doc.scrollHeight-doc.clientHeight;
+        const scrolled=Math.max(0, doc.scrollTop || document.body.scrollTop);
+        bar.style.width=(total>0?(scrolled/total)*100:0)+'%';
+      };
+      document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+    })();
+  </script>
+</div>
+<!-- /End Mindstead One-Widget Article -->

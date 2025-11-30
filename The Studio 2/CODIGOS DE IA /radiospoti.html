@@ -1,0 +1,175 @@
+<!-- MINDSTEAD — RADIO BUBBLE (Spotify green, Play blanco limpio, Stop rojo) -->
+<div id="ms-radio-fab">
+    <button id="ms-radio-toggle" aria-label="Open Mindstead Radio">▶</button>
+    <aside id="ms-radio-drawer" aria-hidden="true">
+      <header>
+        <strong>Mindstead Radio</strong>
+        <button id="ms-radio-close" aria-label="Close">×</button>
+      </header>
+  
+      <div class="ms-radio-section">
+        <input id="ms-radio-search" type="search" placeholder="Buscar pistas..." />
+      </div>
+  
+      <div id="ms-radio-accordion" class="ms-accordion"></div>
+  
+      <footer>
+        <span id="ms-radio-status">Stopped</span>
+        <div class="row">
+          <label>Volumen</label>
+          <input id="ms-radio-volume" type="range" min="0" max="1" step="0.01" value="0.6">
+        </div>
+      </footer>
+    </aside>
+  </div>
+  
+  <style>
+    /* ==== BUBBLE ==== */
+    #ms-radio-fab{position:fixed;left:16px;bottom:16px;z-index:9999;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    #ms-radio-toggle{
+      width:60px;height:60px;border-radius:999px;border:none;
+      background:#1DB954;color:#fff;font-weight:700;font-size:24px;
+      box-shadow:0 8px 24px rgba(0,0,0,.35);cursor:pointer;transition:.2s;
+      outline:none;appearance:none;-webkit-appearance:none;
+    }
+    #ms-radio-toggle:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(0,0,0,.45)}
+  
+    /* ==== Drawer ==== */
+    #ms-radio-drawer{
+      position:fixed;left:16px;bottom:84px;width:320px;max-height:70vh;
+      background:linear-gradient(180deg,#0e1116,#151a22);
+      color:#eaeaf0;border:1px solid rgba(255,255,255,.12);border-radius:16px;
+      box-shadow:0 16px 38px rgba(0,0,0,.45);overflow:hidden;
+      transform:translateY(10px) scale(.98);opacity:0;pointer-events:none;transition:.2s;
+    }
+    #ms-radio-drawer.show{transform:none;opacity:1;pointer-events:auto}
+    #ms-radio-drawer header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    #ms-radio-drawer header strong{color:#fff}
+    #ms-radio-close{
+      background:transparent;border:1px solid rgba(255,255,255,.2);color:#eaeaf0;
+      border-radius:10px;padding:6px 10px;cursor:pointer;
+      outline:none;appearance:none;-webkit-appearance:none;
+    }
+  
+    .ms-radio-section{padding:10px 12px}
+    #ms-radio-search{
+      width:100%;background:#0f131a;border:1px solid rgba(255,255,255,.12);
+      border-radius:10px;color:#eaeaf0;padding:10px 12px;font-size:14px
+    }
+  
+    /* ==== Accordion ==== */
+    .ms-accordion{max-height:50vh;overflow:auto;padding:6px 8px}
+    details.ms-topic{
+      background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;margin:8px 0;padding:8px
+    }
+    details.ms-topic > summary{
+      list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;
+      font-weight:600;color:#fff;outline:none
+    }
+    details.ms-topic > summary::-webkit-details-marker{display:none}
+    .ms-track{display:flex;align-items:center;justify-content:space-between;gap:8px;
+      padding:8px;border:1px solid rgba(255,255,255,.1);border-radius:10px;margin:6px 0;background:rgba(255,255,255,.02)}
+    .ms-track .meta{display:flex;align-items:center;gap:8px}
+  
+    /* ==== Botones Play / Stop ==== */
+    .ms-play{
+      border:none;outline:none;-webkit-appearance:none;appearance:none;
+      cursor:pointer;transition:.2s;
+      border-radius:10px;padding:10px 16px;font-size:15px;font-weight:600;
+    }
+    .ms-play[data-action="play"]{
+      background:#fff;color:#000;
+    }
+    .ms-play[data-action="play"]:hover{background:#e5e5e5}
+    .ms-play[data-action="stop"]{
+      background:#dc2626;color:#fff;
+    }
+    .ms-play[data-action="stop"]:hover{background:#b91c1c}
+  
+    /* ==== Edit (URL) ==== */
+    .ms-edit{
+      border:1px dashed rgba(255,255,255,.2);background:transparent;
+      color:#93c5fd;border-radius:8px;padding:4px 8px;cursor:pointer;font-size:12px
+    }
+    .hint{opacity:.7;font-size:12px}
+  
+    /* ==== Footer ==== */
+    #ms-radio-drawer footer{
+      border-top:1px solid rgba(255,255,255,.08);padding:10px 12px;display:grid;gap:6px
+    }
+    #ms-radio-status{font-size:12px;opacity:.8}
+    footer .row{display:flex;align-items:center;gap:10px}
+    footer label{font-size:12px;opacity:.8}
+  
+    /* Quita highlight azul en iOS/Chrome */
+    #ms-radio-fab,#ms-radio-drawer{
+      -webkit-tap-highlight-color:transparent !important;
+    }
+    .ms-play::-moz-focus-inner,
+    #ms-radio-toggle::-moz-focus-inner,
+    #ms-radio-close::-moz-focus-inner{border:0}
+  </style>
+  
+  <script>
+  /* Script igual al anterior, solo cambian estilos (no lo recorto para que quede funcional) */
+  (function(){
+    const TOPICS = [
+      { id:'relax', title:'Música relajante', icon:'🎵', items:[
+        {id:'pad-alpha', type:'gen', label:'Pad suave + Alpha', meta:'binaural 10Hz + pad'},
+        {id:'pad-theta', type:'gen', label:'Pad profundo + Theta', meta:'binaural 6Hz + pad'},
+        {id:'ocean-soft',type:'gen', label:'Mar suave', meta:'ruido filtrado + vaivén'},
+        {id:'rain-soft', type:'gen', label:'Lluvia suave', meta:'ruido + gotas'},
+        {id:'custom-music', type:'url', label:'Tu pista (URL)', meta:'pega tu enlace'}
+      ]},
+      { id:'podcasts', title:'Podcasts & Talks', icon:'🎙️', items:[
+        {id:'pod-1', type:'url', label:'Podcast 1 (URL)', meta:'añade enlace'},
+        {id:'pod-2', type:'url', label:'Podcast 2 (URL)', meta:'añade enlace'},
+        {id:'pod-3', type:'url', label:'Podcast 3 (URL)', meta:'añade enlace'},
+        {id:'pod-4', type:'url', label:'Podcast 4 (URL)', meta:'añade enlace'},
+        {id:'pod-5', type:'url', label:'Podcast 5 (URL)', meta:'añade enlace'}
+      ]},
+      { id:'nature', title:'Ambiente & Naturaleza', icon:'🌿', items:[
+        {id:'rain', type:'gen', label:'Lluvia', meta:'ruido con filtro'},
+        {id:'wind', type:'gen', label:'Viento', meta:'ruido barrido'},
+        {id:'waves',type:'gen', label:'Olas', meta:'modulación lenta'},
+        {id:'forest',type:'gen', label:'Bosque', meta:'viento + crujidos'},
+        {id:'river', type:'gen', label:'Río', meta:'burbujeo sutil'}
+      ]},
+      { id:'focus', title:'Focus Loops', icon:'⚡', items:[
+        {id:'alpha', type:'gen', label:'Alpha Focus', meta:'~10Hz + white'},
+        {id:'beta', type:'gen', label:'Beta Light', meta:'~16Hz + pink'},
+        {id:'res6', type:'gen', label:'Resonancia 6bpm', meta:'AM 0.1Hz'},
+        {id:'pink', type:'gen', label:'Pink Loop', meta:'pink noise'},
+        {id:'mix', type:'gen', label:'Noise Mix', meta:'pink+brown'}
+      ]},
+      { id:'noise', title:'Ruido Blanco & Colores', icon:'🌀', items:[
+        {id:'white', type:'gen', label:'White Noise', meta:'uniforme'},
+        {id:'pinkc', type:'gen', label:'Pink Noise', meta:'-3 dB/oct'},
+        {id:'brown', type:'gen', label:'Brown Noise', meta:'-6 dB/oct'},
+        {id:'blue', type:'gen', label:'Blue Noise', meta:'+3 dB/oct (sim)'},
+        {id:'violet', type:'gen', label:'Violet Noise', meta:'+6 dB/oct (sim)'}
+      ]}
+    ];
+    const drawer=document.getElementById('ms-radio-drawer');
+    const toggle=document.getElementById('ms-radio-toggle');
+    const closeBtn=document.getElementById('ms-radio-close');
+    const accRoot=document.getElementById('ms-radio-accordion');
+    const statusEl=document.getElementById('ms-radio-status');
+    const volEl=document.getElementById('ms-radio-volume');
+    const searchEl=document.getElementById('ms-radio-search');
+    function topicEl(topic){const wrap=document.createElement('details');wrap.className='ms-topic';const sum=document.createElement('summary');sum.innerHTML=`<span>${topic.icon}</span> <span>${topic.title}</span>`;wrap.appendChild(sum);const list=document.createElement('div');topic.items.forEach(item=>{const row=document.createElement('div');row.className='ms-track';row.dataset.id=item.id;row.dataset.type=item.type;row.innerHTML=`<div class="meta"><button class="ms-play" data-action="play" data-id="${item.id}">Play</button><div><div><strong>${item.label}</strong></div><div class="hint">${item.meta||''}</div></div></div><div>${item.type==='url'?`<button class="ms-edit" data-action="edit" data-id="${item.id}">URL</button>`:''}<button class="ms-play" data-action="stop" data-id="${item.id}">Stop</button></div>`;list.appendChild(row)});wrap.appendChild(list);return wrap;}
+    function renderAccordion(filter=''){accRoot.innerHTML='';TOPICS.forEach(t=>{const el=topicEl(t);if(filter){const rows=el.querySelectorAll('.ms-track');let any=false;rows.forEach(r=>{const txt=(r.innerText||'').toLowerCase();const hit=txt.includes(filter);r.style.display=hit?'':'none';if(hit)any=true});if(!any)el.style.display='none'}accRoot.appendChild(el)})}
+    renderAccordion();searchEl.addEventListener('input',()=>renderAccordion((searchEl.value||'').toLowerCase()));toggle.addEventListener('click',()=>drawer.classList.toggle('show'));closeBtn.addEventListener('click',()=>drawer.classList.remove('show'));
+    const AudioCtx=window.AudioContext||window.webkitAudioContext;let ctx,master,urlAudio,current={kind:null,id:null,nodes:[]};function ensureCtx(){if(!ctx){ctx=new AudioCtx();master=ctx.createGain();master.connect(ctx.destination);master.gain.value=parseFloat(volEl.value||0.6)}}volEl.addEventListener('input',()=>{if(master)master.gain.value=parseFloat(volEl.value)});const KURL='ms_radio_urls_v1';function getURLMap(){try{return JSON.parse(localStorage.getItem(KURL))||{}}catch(e){return{}}}function setURL(id,url){const m=getURLMap();m[id]=url;localStorage.setItem(KURL,JSON.stringify(m))}function stopAll(){if(current.kind==='gen'&&current.nodes){current.nodes.forEach(n=>{try{n.stop?.()}catch{}try{n.disconnect?.()}catch{}})}if(urlAudio){urlAudio.pause();urlAudio.src='';}current={kind:null,id:null,nodes:[]};status('Stopped')}function status(txt){statusEl.textContent=txt}
+    function playNoise(color='white',gain=0.3){const buf=ctx.createBuffer(1,ctx.sampleRate*2,ctx.sampleRate);const data=buf.getChannelData(0);let last=0;for(let i=0;i<data.length;i++){const w=Math.random()*2-1;if(color==='white')data[i]=w;else if(color==='pink'){last=0.98*last+0.02*w;data[i]=last*3.5}else if(color==='brown'){last=(last+0.02*w)/1.02;data[i]=last*5}else data[i]=w;}const src=ctx.createBufferSource();src.buffer=buf;src.loop=true;const g=ctx.createGain();g.gain.value=gain;src.connect(g).connect(master);src.start();return[src,g];}
+    function playBinaural(beat=10,base=200){const l=ctx.createOscillator(),r=ctx.createOscillator();l.frequency.value=base-beat/2;r.frequency.value=base+beat/2;const gl=ctx.createGain(),gr=ctx.createGain();gl.gain.value=0.08;gr.gain.value=0.08;l.connect(gl).connect(master);r.connect(gr).connect(master);l.start();r.start();return[l,r,gl,gr];}
+    function playGen(id){ensureCtx();stopAll();let nodes=[];switch(id){case 'pad-alpha':nodes=[...playBinaural(10),...playNoise('white',0.08)];break;case 'pad-theta':nodes=[...playBinaural(6),...playNoise('pink',0.08)];break;case 'ocean-soft':nodes=[...playNoise('brown',0.3)];break;case 'rain-soft':nodes=[...playNoise('pink',0.25)];break;case 'rain':nodes=[...playNoise('pink',0.25)];break;case 'wind':nodes=[...playNoise('pink',0.2)];break;case 'waves':nodes=[...playNoise('brown',0.3)];break;case 'forest':nodes=[...playNoise('pink',0.2)];break;case 'river':nodes=[...playNoise('white',0.22)];break;case 'alpha':nodes=[...playBinaural(10),...playNoise('white',0.2)];break;case 'beta':nodes=[...playBinaural(16),...playNoise('pink',0.2)];break;case 'res6':nodes=[...playNoise('white',0.2)];break;case 'pink':nodes=[...playNoise('pink',0.28)];break;case 'mix':nodes=[...playNoise('pink',0.18),...playNoise('brown',0.16)];break;case 'white':nodes=[...playNoise('white',0.3)];break;case 'pinkc':nodes=[...playNoise('pink',0.3)];break;case 'brown':nodes=[...playNoise('brown',0.3)];break;case 'blue':nodes=[...playNoise('white',0.26)];break;case 'violet':nodes=[...playNoise('white',0.22)];break;}current={kind:'gen',id,nodes};status('Playing • '+id);}
+    function playURL(id){const map=getURLMap();const src=map[id]||prompt('Pega URL:');if(!src)return;setURL(id,src);ensureCtx();stopAll();if(!urlAudio){urlAudio=new Audio();urlAudio.crossOrigin='anonymous';urlAudio.loop=true;}urlAudio.src=src;urlAudio.volume=parseFloat(volEl.value||0.6);urlAudio.play().then(()=>status('Playing • '+id)).catch(()=>status('Error URL'));current={kind:'url',id,nodes:[]};}
+    accRoot.addEventListener('click',e=>{const act=e.target.getAttribute('data-action');if(!act)return;const row=e.target.closest('.ms-track');const id=row?.dataset.id;const type=row?.dataset.type;if(act==='play'){if(type==='gen')playGen(id);else playURL(id);}if(act==='stop'){stopAll();}if(act==='edit'&&type==='url'){const cur=getURLMap()[id]||'';const next=prompt('Pega URL:',cur);if(next){setURL(id,next);status('URL guardada');}}});
+  })();
+  </script>
+  
