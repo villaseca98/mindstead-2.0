@@ -1,0 +1,271 @@
+<div id="ms-header-block">
+    <style>
+    #ms-header-block *{
+      box-sizing:border-box;
+      font-family:Inter,system-ui,sans-serif;
+    }
+    
+    /* HEADER */
+    #ms-header{
+      position:fixed;
+      top:0;left:0;width:100%;
+      padding:18px 32px;
+      background:rgba(10,12,20,0.45);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      z-index:9999;
+    }
+    
+    /* NAV BAR */
+    #ms-header .ms-nav{
+      max-width:1300px;
+      margin:0 auto;
+      display:flex;
+      justify-content:flex-start;
+      align-items:center;
+      gap:48px;
+    }
+    
+    /* TOP ITEMS */
+    .ms-item{
+      position:relative;
+      color:#f0f6ff;
+      font-weight:600;
+      font-size:1rem;
+      cursor:pointer;
+    }
+    
+    .ms-item .arrow{
+      font-size:.7rem;
+      opacity:.6;
+      margin-left:6px;
+    }
+    
+    /* DROPDOWN BASE */
+    .ms-dropdown{
+      position:absolute;
+      top:36px;
+      left:0;
+      background:rgba(10,16,28,0.92);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border-radius:14px;
+      padding:14px 0;
+      min-width:280px;
+      border:1px solid rgba(255,255,255,0.12);
+      box-shadow:0 15px 45px rgba(0,0,0,.45);
+      display:none;
+    }
+    
+    .ms-item:hover > .ms-dropdown{
+      display:block;
+    }
+    
+    /* SIMPLE DROPDOWN LINKS (The Studio / Insights / Privacy) */
+    .ms-dropdown a{
+      display:block;
+      padding:8px 18px;
+      text-decoration:none;
+      color:#d6e3ff;
+      font-size:.92rem;
+    }
+    .ms-dropdown a:hover{
+      color:#5edfff;
+    }
+    
+    /* ---------- GROUP DROPDOWNS (METHODS + JOURNAL) ---------- */
+    .dd-group{
+      padding:8px 0;
+    }
+    
+    .dd-title{
+      padding:8px 18px;
+      font-weight:700;
+      font-size:.95rem;
+      color:#ffffff;
+      cursor:pointer;
+    }
+    
+    .dd-sub{
+      display:none;
+      padding-left:18px;
+      padding-bottom:8px;
+    }
+    
+    .dd-sub a{
+      display:block;
+      padding:4px 0;
+      font-size:.88rem;
+      color:#dbe8ff;
+    }
+    .dd-sub a:hover{
+      color:#5edfff;
+    }
+    
+    /* SHOW SUBGROUP ON HOVER */
+    .dd-group:hover .dd-sub{
+      display:block;
+    }
+    
+    /* ONLY ONE SUBMENU OPEN AT A TIME */
+    .methods-dd .dd-group:hover ~ .dd-group .dd-sub{
+      display:none;
+    }
+    
+    .journal-dd .dd-group:hover ~ .dd-group .dd-sub{
+      display:none;
+    }
+    </style>
+    
+    <header id="ms-header">
+      <div class="ms-nav">
+    
+        <!-- ======================= THE STUDIO ======================= -->
+        <div class="ms-item">
+          The Studio <span class="arrow">▾</span>
+          <div class="ms-dropdown">
+            <a href="#">Resilience Tools</a>
+            <a href="#">Nutrition & Health Habits</a>
+            <a href="#">Better Sleep</a>
+            <a href="#">Breathing Techniques</a>
+            <a href="#">Focus & Productivity</a>
+            <a href="#">Digital Detox</a>
+            <a href="#">Stress Management</a>
+            <a href="#">Anxiety Relief</a>
+          </div>
+        </div>
+    
+        <!-- ======================= THE METHODS ======================= -->
+        <div class="ms-item">
+          The Methods <span class="arrow">▾</span>
+          <div class="ms-dropdown methods-dd">
+    
+            <div class="dd-group">
+              <div class="dd-title">Breathing Exercises</div>
+              <div class="dd-sub">
+                <a href="#">4–7–8 Breathing</a>
+                <a href="#">Alternate Nostril Breathing</a>
+                <a href="#">Device-Free Mornings</a>
+                <a href="#">Ocean Breathing</a>
+              </div>
+            </div>
+    
+            <div class="dd-group">
+              <div class="dd-title">Meditation Routines</div>
+              <div class="dd-sub">
+                <a href="#">Body Scan</a>
+                <a href="#">Guided Visualization</a>
+                <a href="#">Sleep Improvement Plans</a>
+                <a href="#">Mantra Repetition</a>
+              </div>
+            </div>
+    
+            <div class="dd-group">
+              <div class="dd-title">Sleep Improvement Plans</div>
+              <div class="dd-sub">
+                <a href="#">Progressive Muscle Relaxation</a>
+                <a href="#">Screen-Free Wind Down</a>
+                <a href="#">Optimal Sleep Environment</a>
+                <a href="#">Consistent Bedtime Routine</a>
+              </div>
+            </div>
+    
+            <div class="dd-group">
+              <div class="dd-title">Digital Detox Programs</div>
+              <div class="dd-sub">
+                <a href="#">Device-Free Mornings</a>
+                <a href="#">Notification Audit</a>
+                <a href="#">Scheduled Breaks</a>
+                <a href="#">Tech-Free Zone</a>
+              </div>
+            </div>
+    
+            <div class="dd-group">
+              <div class="dd-title">Workout Routines</div>
+              <div class="dd-sub">
+                <a href="#">Bodyweight Circuit</a>
+                <a href="#">Micro Workouts</a>
+                <a href="#">Stretch & Mobility Flow</a>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+    
+        <!-- ======================= THE JOURNAL ======================= -->
+        <div class="ms-item">
+          The Journal <span class="arrow">▾</span>
+          <div class="ms-dropdown journal-dd">
+    
+            <div class="dd-group">
+              <div class="dd-title">Mental Health Tips</div>
+              <div class="dd-sub">
+                <a href="#">Cognitive Distortions: The 10 Most Common</a>
+                <a href="#">How to Reset Your Mood in 60 Seconds</a>
+                <a href="#">The 5-Minute Technique to Stop Mental Overload</a>
+              </div>
+            </div>
+    
+            <div class="dd-group">
+              <div class="dd-title">Productivity Hacks</div>
+              <div class="dd-sub">
+                <a href="#">Deep Work for Distracted People</a>
+                <a href="#">Context Switching — The Silent Killer</a>
+                <a href="#">Dopamine & Motivation (Ethical Use)</a>
+              </div>
+            </div>
+    
+            <div class="dd-group">
+              <div class="dd-title">Wellness Guide</div>
+              <div class="dd-sub">
+                <a href="#">Hydration & Cognition</a>
+                <a href="#">Evening Screens & Melatonin</a>
+                <a href="#">Sleep Architecture Explained</a>
+              </div>
+            </div>
+    
+            <div class="dd-group">
+              <div class="dd-title">Science & Research Insights</div>
+              <div class="dd-sub">
+                <a href="#">Coherent Breathing & HRV</a>
+                <a href="#">Context Switching: Data Behind It</a>
+                <a href="#">Evening Screens: What the Studies Show</a>
+              </div>
+            </div>
+    
+            <div class="dd-group">
+              <div class="dd-title">Community Success Stories</div>
+              <div class="dd-sub">
+                <a href="#">“I Sleep Again” — Reader Story</a>
+                <a href="#">5 Micro-Habits Our Community Swears By</a>
+                <a href="#">6-Minute Practice That Improved HRV</a>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+    
+        <!-- ======================= INSIGHTS ======================= -->
+        <div class="ms-item">
+          Insights <span class="arrow">▾</span>
+          <div class="ms-dropdown">
+            <a href="#">Latest Research</a>
+            <a href="#">Weekly Trends</a>
+            <a href="#">Community Polls</a>
+          </div>
+        </div>
+    
+        <!-- ======================= PRIVACY POLICY ======================= -->
+        <div class="ms-item">
+          Privacy Policy <span class="arrow">▾</span>
+          <div class="ms-dropdown">
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookies Policy</a>
+            <a href="#">User Data</a>
+          </div>
+        </div>
+    
+      </div>
+    </header>
+    </div>
+    

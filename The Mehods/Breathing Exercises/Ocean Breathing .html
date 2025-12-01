@@ -1,0 +1,695 @@
+<!-- Mindstead — Mantra Repetition (Elementor-Safe B2 + Timeline + Full-Width Background) -->
+<div id="ms-mantra-wrapper">
+
+    <style>
+    /* =====================================================
+       1) GLOBAL HARD RESET (ANTI-ELEMENTOR)
+    ===================================================== */
+    #ms-mantra-wrapper{
+      width:100% !important;
+      margin:0 auto !important;
+      padding:0 !important;
+      display:block !important;
+      position:relative;
+      z-index:0;
+    }
+    /* FULL-WIDTH BACKGROUND BAND (ARREGLA LADOS CLAROS) */
+    #ms-mantra-wrapper::before{
+      content:"";
+      position:absolute;
+      top:0;
+      bottom:0;
+      left:50%;
+      right:50%;
+      margin-left:-50vw;
+      margin-right:-50vw;
+      background:radial-gradient(circle at top,#1b2335 0,#070910 48%,#05060b 100%);
+      z-index:-1;
+    }
+    
+    /* todo dentro del wrapper hereda fuentes y reset */
+    #ms-mantra-wrapper *{
+      box-sizing:border-box;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif !important;
+    }
+    
+    /* =====================================================
+       2) FORCE HEADINGS WHITE
+    ===================================================== */
+    #ms-mantra-wrapper h1,
+    #ms-mantra-wrapper h2,
+    #ms-mantra-wrapper h3,
+    #ms-mantra-wrapper h4,
+    #ms-mantra-wrapper h5 {
+      color:#ffffff !important;
+      text-shadow:0 0 8px rgba(255,255,255,.04);
+    }
+    
+    /* =====================================================
+       3) MAIN CONTAINER
+    ===================================================== */
+    #ms-mantra-main{
+      width:100% !important;
+      max-width:1120px !important;
+      margin:0 auto !important;
+      padding:0 !important;
+      display:block !important;
+    }
+    
+    /* =====================================================
+       4) MAIN WIDGET BLOCK
+    ===================================================== */
+    #ms-mantra{
+      width:100% !important;
+      margin:0 auto !important;
+      padding:64px 22px !important;
+    
+      background:radial-gradient(circle at top,#1b2335 0,#070910 48%,#05060b 100%);
+      color:#e8edf7;
+    
+      border-radius:26px;
+      box-shadow:0 30px 65px rgba(0,0,0,.65);
+      border:1px solid rgba(255,255,255,.06);
+    }
+    
+    /* =====================================================
+       HEADER
+    ===================================================== */
+    #ms-mantra .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 14px;border-radius:999px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.05);
+      font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:#9aa6c4;
+    }
+    #ms-mantra .pill-dot{
+      width:7px;height:7px;border-radius:50%;
+      background:#1ec4f0;
+      box-shadow:0 0 10px rgba(30,196,240,.8);
+    }
+    #ms-mantra h1{
+      font-size:2.8rem;margin:0 0 12px;letter-spacing:.02em;
+    }
+    #ms-mantra .subtitle{
+      max-width:640px;color:#9aa6c4;font-size:1.04rem;line-height:1.7;
+    }
+    
+    /* =====================================================
+       TOP SECTION (INTRO + META)
+    ===================================================== */
+    #ms-mantra .top{
+      margin-top:30px;
+      display:grid;grid-template-columns:3fr 2.2fr;gap:28px;
+    }
+    #ms-mantra .intro-card,
+    #ms-mantra .meta{
+      background:#141925;border-radius:20px;
+      border:1px solid rgba(255,255,255,.06);
+      padding:22px;
+    }
+    #ms-mantra .intro-card p{color:#9aa6c4;margin:0 0 10px;}
+    #ms-mantra .intro-card strong{color:#ffffff;}
+    
+    #ms-mantra .meta-row{
+      display:flex;justify-content:space-between;align-items:center;
+      margin-bottom:10px;font-size:.92rem;
+    }
+    #ms-mantra .meta-label{color:#9aa6c4;}
+    #ms-mantra .meta-value{font-weight:500;}
+    #ms-mantra .chip{
+      padding:5px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.8rem;color:#9aa6c4;
+    }
+    
+    /* =====================================================
+       SECTION HEADERS
+    ===================================================== */
+    #ms-mantra .section{margin-top:46px;}
+    #ms-mantra .section-head{
+      display:flex;justify-content:space-between;align-items:baseline;
+      margin-bottom:16px;
+    }
+    #ms-mantra .section-title{
+      text-transform:uppercase;letter-spacing:.16em;
+      font-size:1.02rem;color:#9aa6c4;font-weight:600;
+    }
+    #ms-mantra .section-note{font-size:.9rem;color:#9aa6c4;}
+    
+    /* =====================================================
+       FRAMEWORK (4 STEPS)
+    ===================================================== */
+    #ms-mantra .grid4{
+      display:grid !important;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+    #ms-mantra .card{
+      background:#141925;border-radius:16px;padding:18px 18px 20px;
+      border:1px solid rgba(255,255,255,.05);
+      transition:.32s cubic-bezier(.25,.4,.25,1);
+    }
+    #ms-mantra .card:hover{
+      transform:translateY(-4px);
+      border-color:#1ec4f0;
+      box-shadow:0 18px 40px rgba(0,0,0,.55);
+    }
+    #ms-mantra .step{
+      font-size:.76rem;text-transform:uppercase;
+      letter-spacing:.16em;margin-bottom:6px;color:#9aa6c4;
+    }
+    #ms-mantra .card-title{font-size:1.05rem;font-weight:600;margin-bottom:6px;}
+    #ms-mantra .card p{font-size:.94rem;color:#9aa6c4;margin:0;}
+    
+    /* =====================================================
+       HOW TO PRACTICE · TIMELINE ULTRA VISUAL
+    ===================================================== */
+    #ms-mantra .timeline{
+      margin-top:30px;
+      position:relative;
+      padding-left:32px;
+    }
+    #ms-mantra .timeline::before{
+      content:"";
+      position:absolute;
+      top:0;left:12px;
+      width:3px;height:100%;
+      background:linear-gradient(#1ec4f0,#32e0b4);
+      border-radius:3px;
+      opacity:.25;
+    }
+    #ms-mantra .tl-item{
+      position:relative;
+      margin-bottom:32px;
+      padding-left:22px;
+    }
+    #ms-mantra .tl-icon{
+      position:absolute;
+      left:-1px;top:0;
+      width:24px;height:24px;
+      border-radius:50%;
+      background:linear-gradient(145deg,#1ec4f0,#32e0b4);
+      box-shadow:0 4px 14px rgba(0,0,0,.45);
+      display:flex;align-items:center;justify-content:center;
+      font-size:1rem;color:#021015;font-weight:700;
+    }
+    #ms-mantra .tl-card{
+      background:#141925;
+      padding:18px 20px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.05);
+      box-shadow:0 14px 34px rgba(0,0,0,.45);
+      transition:.28s;
+    }
+    #ms-mantra .tl-card:hover{
+      transform:translateY(-4px);
+      border-color:#1ec4f0;
+      box-shadow:0 20px 45px rgba(0,0,0,.55);
+    }
+    #ms-mantra .tl-title{
+      font-size:1.1rem;font-weight:600;margin-bottom:6px;color:#ffffff;
+    }
+    #ms-mantra .tl-desc{
+      font-size:.95rem;line-height:1.65;color:#9aa6c4;
+    }
+    
+    /* =====================================================
+       RELATED ARTICLES (APPLE CARD STYLE)
+    ===================================================== */
+    #ms-mantra .articles-grid{
+      display:grid !important;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+    #ms-mantra .article-card{
+      background:#141925;border-radius:16px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.05);
+      box-shadow:0 14px 32px rgba(0,0,0,.4);
+      transition:.3s cubic-bezier(.25,.4,.25,1);
+    }
+    #ms-mantra .article-card:hover{
+      transform:translateY(-4px);
+      border-color:#1ec4f0;
+      box-shadow:0 22px 48px rgba(0,0,0,.6);
+    }
+    #ms-mantra .article-img{
+      width:100%;height:170px;object-fit:cover;
+    }
+    #ms-mantra .article-body{
+      padding:18px;min-height:98px;
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    #ms-mantra .article-title{
+      font-size:1.05rem;font-weight:600;margin-bottom:4px;
+    }
+    #ms-mantra .article-desc{
+      font-size:.9rem;color:#9aa6c4;
+    }
+    
+    /* =====================================================
+       ACTIVITIES GRID
+    ===================================================== */
+    #ms-mantra .activities-grid{
+      display:grid !important;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+    #ms-mantra .activity-card{
+      background:#141925;border-radius:16px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.05);
+      transition:.3s cubic-bezier(.25,.4,.25,1);
+    }
+    #ms-mantra .activity-card:hover{
+      transform:translateY(-4px);
+      border-color:#1ec4f0;
+    }
+    #ms-mantra .activity-img{
+      width:100%;height:170px;object-fit:cover;filter:brightness(.88);
+    }
+    #ms-mantra .activity-body{padding:16px;}
+    #ms-mantra .activity-title{font-size:1.03rem;font-weight:600;margin-bottom:4px;}
+    #ms-mantra .activity-desc{font-size:.9rem;color:#9aa6c4;}
+    
+    /* =====================================================
+       FAQ EXTENDED
+    ===================================================== */
+    #ms-mantra .faq{
+      background:#141925;border-radius:20px;
+      border:1px solid rgba(255,255,255,.06);
+      padding:22px 20px 18px;
+    }
+    #ms-mantra .faq-item{
+      border-bottom:1px solid rgba(255,255,255,.07);
+      padding:14px 0;
+    }
+    #ms-mantra .faq-q{
+      display:flex !important;align-items:flex-start;cursor:pointer;gap:12px;
+    }
+    #ms-mantra .faq-icon{
+      width:22px;height:22px;border-radius:7px;
+      background:rgba(255,255,255,.05);
+      display:flex;align-items:center;justify-content:center;
+      color:#1ec4f0;font-size:1rem;
+    }
+    #ms-mantra .faq-toggle{
+      margin-left:auto;font-size:1.2rem;color:#9aa6c4;
+      transition:.3s;
+    }
+    #ms-mantra .faq-q[data-open="true"] .faq-toggle{
+      transform:rotate(45deg);
+    }
+    #ms-mantra .faq-a{
+      max-height:0;overflow:hidden;
+      transition:max-height .38s ease;
+    }
+    #ms-mantra .faq-a[data-open="true"]{
+      max-height:260px;
+    }
+    #ms-mantra .faq-a-inner{
+      padding:6px 4px 6px 34px;
+      font-size:.95rem;
+      color:#9aa6c4;
+      line-height:1.7;
+    }
+    
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+    #ms-mantra .footer{
+      margin-top:30px;
+      display:flex !important;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+    #ms-mantra .footer-note{
+      font-size:.9rem;color:#9aa6c4;max-width:520px;
+    }
+    #ms-mantra .btn{
+      padding:10px 18px;border-radius:999px;
+      font-size:.86rem;cursor:pointer;text-decoration:none;
+    }
+    #ms-mantra .btn-primary{
+      background:linear-gradient(to right,#1ec4f0,#32e0b4);
+      color:#021015;border:none;
+    }
+    #ms-mantra .btn-ghost{
+      background:transparent;color:#9aa6c4;
+    }
+    #ms-mantra .btn-ghost:hover{background:rgba(255,255,255,.04);}
+    
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+    @media(max-width:900px){
+      #ms-mantra .top{grid-template-columns:1fr;}
+      #ms-mantra .grid4{grid-template-columns:repeat(2,1fr);}
+      #ms-mantra .articles-grid,
+      #ms-mantra .activities-grid{grid-template-columns:1fr;}
+    }
+    @media(max-width:640px){
+      #ms-mantra{padding:42px 16px !important;}
+      #ms-mantra h1{font-size:2.2rem;}
+      #ms-mantra .grid4{grid-template-columns:1fr;}
+    }
+    </style>
+    
+    <div id="ms-mantra-main"><div id="ms-mantra">
+    
+    <!-- HEADER -->
+    <div class="pill"><span class="pill-dot"></span> The Methods · Ocean Breathing</div>
+    <h1>Ocean Breathing</h1>
+    <p class="subtitle">A slow, wave-like breathing method designed to calm the nervous system, deepen focus, and regulate emotional intensity.</p>
+    
+    <!-- TOP -->
+    <div class="top">
+      <div class="intro-card">
+        <p><strong>Core idea:</strong> Ocean Breathing uses a controlled, textured breath—softly constricting the throat on the inhale and exhale—to create a gentle, wave-like sound.</p>
+    
+        <p>This sound becomes an anchor: steady, repetitive, and predictable. It gives the mind something to follow, reducing mental noise and helping the body shift into a parasympathetic state.</p>
+    
+        <p>This version includes a full 4-step framework, a guided practice breakdown, related articles, and three add-on activities to enhance results.</p>
+      </div>
+    
+      <div class="meta">
+        <div class="meta-row"><span class="meta-label">Best used</span><span class="meta-value">Between tasks · After overload</span></div>
+        <div class="meta-row"><span class="meta-label">Length</span><span class="meta-value">8–12 minutes</span></div>
+        <div class="meta-row"><span class="meta-label">Difficulty</span><span class="chip">Low effort</span></div>
+        <div class="meta-row"><span class="meta-label">Effect</span><span class="meta-value">Calm focus</span></div>
+      </div>
+    </div>
+    
+    <!-- FRAMEWORK -->
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">Practice Framework · 4 Steps</div>
+        <div class="section-note">Structure stays. Details adapt.</div>
+      </div>
+    
+      <div class="grid4">
+        <article class="card">
+          <div class="step">Step 1</div>
+          <div class="card-title">Choose a neutral phrase</div>
+          <p>Short, soft, emotionally safe. Good: “I return.” “Just this breath.” “I am here.”  
+          Avoid loaded or motivational phrases.</p>
+        </article>
+    
+        <article class="card">
+          <div class="step">Step 2</div>
+          <div class="card-title">Sync with the breath</div>
+          <p>Inhale silently. Repeat the phrase once per exhale.  
+          Let the breath choose the pace.</p>
+        </article>
+    
+        <article class="card">
+          <div class="step">Step 3</div>
+          <div class="card-title">Stay in the loop</div>
+          <p>If the mind wanders (it will), come back without irritation.  
+          Every return = a rep.</p>
+        </article>
+    
+        <article class="card">
+          <div class="step">Step 4</div>
+          <div class="card-title">Close with intention</div>
+          <p>After the last breath, pause and choose ONE tiny next action.  
+          Prevents slipping back into noise.</p>
+        </article>
+      </div>
+    </section>
+    
+    <!-- HOW TO PRACTICE · TIMELINE -->
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">How to Practice</div>
+        <div class="section-note">A visual step-by-step guide.</div>
+      </div>
+    
+      <div class="timeline">
+    
+        <div class="tl-item">
+          <div class="tl-icon">1</div>
+          <div class="tl-card">
+            <div class="tl-title">Choose the space (30 sec)</div>
+            <div class="tl-desc">
+              No need for silence — just somewhere you can pause.  
+              Desk, bed, bathroom, train: any place where your body can say “I’m here for a moment”.
+            </div>
+          </div>
+        </div>
+    
+        <div class="tl-item">
+          <div class="tl-icon">2</div>
+          <div class="tl-card">
+            <div class="tl-title">Set your posture</div>
+            <div class="tl-desc">
+              Neutral spine, shoulders soft, hands on legs or table.  
+              Eyes closed or half-open. Comfortable, not rigid.
+            </div>
+          </div>
+        </div>
+    
+        <div class="tl-item">
+          <div class="tl-icon">3</div>
+          <div class="tl-card">
+            <div class="tl-title">One long breath</div>
+            <div class="tl-desc">
+              Inhale through the nose. Exhale slowly.  
+              This marks the shift from “doing” to “regulating”.
+            </div>
+          </div>
+        </div>
+    
+        <div class="tl-item">
+          <div class="tl-icon">4</div>
+          <div class="tl-card">
+            <div class="tl-title">Pick the mantra</div>
+            <div class="tl-desc">
+              Choose a neutral, short phrase:  
+              “I return.” · “Just this breath.” · “I am here.”  
+              Avoid affirmations that feel fake or heavy.
+            </div>
+          </div>
+        </div>
+    
+        <div class="tl-item">
+          <div class="tl-icon">5</div>
+          <div class="tl-card">
+            <div class="tl-title">Sync with breath</div>
+            <div class="tl-desc">
+              Inhale = silence. Exhale = one repetition.  
+              Don’t fight the rhythm — let the breath set the metronome.
+            </div>
+          </div>
+        </div>
+    
+        <div class="tl-item">
+          <div class="tl-icon">6</div>
+          <div class="tl-card">
+            <div class="tl-title">Keep the loop</div>
+            <div class="tl-desc">
+              The mind will wander. That’s expected.  
+              Notice → return to the phrase.  
+              Each return is a successful rep, not a mistake.
+            </div>
+          </div>
+        </div>
+    
+        <div class="tl-item">
+          <div class="tl-icon">7</div>
+          <div class="tl-card">
+            <div class="tl-title">Close the session</div>
+            <div class="tl-desc">
+              One last inhale–exhale.  
+              Then choose one tiny next action (water, message, open laptop) and execute it.  
+              That’s how you convert calm into momentum.
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    </section>
+    
+    <!-- RELATED ARTICLES -->
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">Related Articles</div>
+        <div class="section-note">Selected from the Mindstead Journal.</div>
+      </div>
+    
+      <div class="articles-grid">
+    
+        <article class="article-card">
+          <img class="article-img" src="https://picsum.photos/seed/mindstead41/800/500">
+          <div class="article-body">
+            <div class="article-title">Why Your Mind Drifts</div>
+            <div class="article-desc">Understanding cognitive load and how attention collapses.</div>
+          </div>
+        </article>
+    
+        <article class="article-card">
+          <img class="article-img" src="https://picsum.photos/seed/mindstead42/800/500">
+          <div class="article-body">
+            <div class="article-title">The 20-Second Reset</div>
+            <div class="article-desc">A breath-based interruption for spirals and overload.</div>
+          </div>
+        </article>
+    
+        <article class="article-card">
+          <img class="article-img" src="https://picsum.photos/seed/mindstead43/800/500">
+          <div class="article-body">
+            <div class="article-title">Attention Loops</div>
+            <div class="article-desc">How repetitive thought cycles form — and how to break them.</div>
+          </div>
+        </article>
+    
+      </div>
+    </section>
+    
+    <!-- ACTIVITIES -->
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">3 Activities to Pair With This Method</div>
+        <div class="section-note">Before or after mantra sessions.</div>
+      </div>
+    
+      <div class="activities-grid">
+    
+        <article class="activity-card">
+          <img class="activity-img" src="https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=1200">
+          <div class="activity-body">
+            <div class="activity-title">Breathwork Reset</div>
+            <div class="activity-desc">
+              The 4–6 rhythm (inhale 4, exhale 6) primes your body for repetition.
+            </div>
+          </div>
+        </article>
+    
+        <article class="activity-card">
+          <img class="activity-img" src="https://images.pexels.com/photos/4065881/pexels-photo-4065881.jpeg?auto=compress&cs=tinysrgb&w=1200">
+          <div class="activity-body">
+            <div class="activity-title">Focus Anchoring</div>
+            <div class="activity-desc">
+              Hold an object and notice its weight and texture to ground attention.
+            </div>
+          </div>
+        </article>
+    
+        <article class="activity-card">
+          <img class="activity-img" src="https://images.pexels.com/photos/4666752/pexels-photo-4666752.jpeg?auto=compress&cs=tinysrgb&w=1200">
+          <div class="activity-body">
+            <div class="activity-title">Emotional Settling</div>
+            <div class="activity-desc">
+              Release jaw and shoulder tension with long exhalations before the practice.
+            </div>
+          </div>
+        </article>
+    
+      </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">FAQ · Extended</div>
+        <div class="section-note">Clear answers, zero fluff.</div>
+      </div>
+    
+      <div class="faq">
+    
+        <div class="faq-item">
+          <div class="faq-q" data-open="false">
+            <div class="faq-icon">?</div>
+            <span>Do I need to believe the mantra?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">
+            No. The effect comes from repetition + breath synchrony. Belief is optional.
+          </div></div>
+        </div>
+    
+        <div class="faq-item">
+          <div class="faq-q" data-open="false">
+            <div class="faq-icon">?</div>
+            <span>What if my mind is too loud?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">
+            Loud = normal. The practice IS returning.  
+            The number of returns = the strength of the session.
+          </div></div>
+        </div>
+    
+        <div class="faq-item">
+          <div class="faq-q" data-open="false">
+            <div class="faq-icon">?</div>
+            <span>When will I feel something?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">
+            Surface clarity often shows up in under a minute.  
+            Deep calm builds across days.
+          </div></div>
+        </div>
+    
+        <div class="faq-item">
+          <div class="faq-q" data-open="false">
+            <div class="faq-icon">?</div>
+            <span>The mantra becomes annoying. Why?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">
+            That’s resistance to monotony — not failure.  
+            Stay for 30 seconds or switch to a smaller phrase.
+          </div></div>
+        </div>
+    
+        <div class="faq-item">
+          <div class="faq-q" data-open="false">
+            <div class="faq-icon">?</div>
+            <span>Can I use it during anxiety?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">
+            Yes. Use micro-phrases: “One breath.” “I’m here.” “Safe enough.”  
+            Simpler works better in high activation.
+          </div></div>
+        </div>
+    
+        <div class="faq-item">
+          <div class="faq-q" data-open="false">
+            <div class="faq-icon">?</div>
+            <span>Is whispering okay?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">
+            Yes, but internal repetition usually creates deeper calm and less tension.
+          </div></div>
+        </div>
+    
+      </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-note">
+        Combine this method with grounding or breathwork for a complete 10–15 minute recalibration block.
+      </div>
+      <a href="#" class="btn btn-primary">Explore More Methods</a>
+      <a href="#" class="btn btn-ghost">Open Journal Prompts</a>
+    </footer>
+    
+    </div></div>
+    
+    <script>
+    document.querySelectorAll('#ms-mantra .faq-q').forEach(q=>{
+      q.addEventListener('click',()=>{
+        const open = q.getAttribute('data-open') === 'true';
+        const ans = q.parentElement.querySelector('.faq-a');
+        q.setAttribute('data-open', String(!open));
+        ans.setAttribute('data-open', String(!open));
+      });
+    });
+    </script>
+    
+    </div>
+    
